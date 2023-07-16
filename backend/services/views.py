@@ -3,9 +3,12 @@ from rest_framework.views import APIView
 from .models import *
 from .serializers import *
 from rest_framework.response import Response
+from rest_framework import generics
 
 
-class GhalaView(APIView):
+class GhalaView(generics.CreateAPIView):
+    queryset = Ghala.objects.all()
+    serializer_class = GhalaSerializer
     def get(self, request):
         ghalas = Ghala.objects.all()
         output = []
@@ -36,7 +39,9 @@ class GhalaView(APIView):
 
         return Response(serializer.data)
 
-class SokoView(APIView):
+class SokoView(generics.CreateAPIView):
+    queryset = Soko.objects.all()
+    serializer_class = SokoSerializer
     def get(self, request):
         sokos = Soko.objects.all()
         output = []
@@ -47,7 +52,7 @@ class SokoView(APIView):
                 "last_price": soko.last_price,
                 "current_price": soko.current_price,
                 "on_demand": soko.on_demand,
-                "image": soko.image
+                "image": soko.image,
             }
             output.append(soko_data)
 

@@ -11,11 +11,14 @@ class FarmerView(APIView):
         output = []
         for farmer in farmers:
            farmer_data = {
-                   "first_name": farmer.first_name,
-                   "last_name": farmer.last_name,
-                   "email": farmer.email,
-                   "phone": farmer.phone,
-                   "location": farmer.location
+                    "first_name": farmer.first_name,
+                    "last_name": farmer.last_name,
+                    "email": farmer.email,
+                    "phone": farmer.phone,
+                    "location": farmer.location,
+                    "date_joined": farmer.date_joined,
+                    "is_active": farmer.is_active,
+                    "is_staff": farmer.is_staff,
                }
            output.append(farmer_data)
         return Response(output)

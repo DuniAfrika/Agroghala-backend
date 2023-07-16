@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'myproducts.apps.MyproductsConfig',
     'rest_framework',
     'corsheaders',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,9 @@ REST_FRAMEWORK = {
 #Whitelisting The react app
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
+    'http://127.0.0.1:3000'
 ]
+CORS_ALLOWED_CREDENTIALS = True
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -139,3 +142,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "Started adding files for Agroghala: Backend in Progress"
+git commit -m "Registration and Login backend-partly done"
 git push

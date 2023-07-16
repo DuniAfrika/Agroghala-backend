@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class Farmer(models.Model):
     first_name = models.CharField(max_length=50, default="")

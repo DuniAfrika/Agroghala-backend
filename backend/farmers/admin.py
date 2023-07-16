@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Farmer
+from .models import *
 
 
 class FarmerAdmin(admin.ModelAdmin):
     class Meta:
         model = Farmer
-        fields = ('first_name', 'last_name', 'email', 'phone', 'location')
+        fields = '__all__'
 
 admin.site.register(Farmer, FarmerAdmin)
