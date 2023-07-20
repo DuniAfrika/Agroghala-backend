@@ -20,6 +20,8 @@ from rest_framework_simplejwt.views import (
         TokenObtainPairView,
         TokenRefreshView
     )
+from users.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,9 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include('users.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
+    path('auth/', include('authentication.urls')),
+    path('api-auth/drf/', include('drf_social_oauth2.urls', namespace='drf')),
+    path('api/services/', include('services.urls')),
+    path('api/myproducts/', include('myproducts.urls')),
+    path('api/blogs/', include('blogs.urls')),
 ]

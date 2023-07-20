@@ -39,10 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'services',
+    'blogs',
+    'myproducts',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
     'social_django',
+    'oauth2_provider',
+    'authentication.apps.AuthenticationConfig',
     #oauth
     'drf_social_oauth2',
 ]
@@ -67,6 +72,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'drf_social_oauth2.authentication.SocialAuthentication',
     ],
 }
 
@@ -79,6 +86,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:3000'
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_CREDENTIALS = True
 
 ROOT_URLCONF = 'agroghala_final.urls'
@@ -163,11 +172,17 @@ AUTH_USER_MODEL = 'users.NewUser'
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2', #Add Facebook backend
     'social_core.backends.twitter.TwitterOAuth', #Add Twitter backend
-    'social_core.backends.google.GoogleOAuth2',  # Add Google backend
     'social_core.backends.apple.AppleIdAuth',  # Add Apple backend
-
+    'social_core.backends.google.GoogleOAuth2',
+    'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+# Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+]
 
 LOGIN_URL = 'token_obtain_api'
 LOGOUT_URL = ''
@@ -178,3 +193,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = FACEBOOK_SECRET_KEY
 
 SOCIAL_AUTH_TWITTER_KEY = TWITTER_ID
 SOCIAL_AUTH_TWITTER_SECRET = TWITTER_SECRET_KEY
+
+# Google configuration
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = GOOGLE_ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = GOOGLE_SECRET_KEY

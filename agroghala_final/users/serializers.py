@@ -29,3 +29,8 @@ class LoginUserSerializer(serializers.ModelSerializer):
         model = NewUser
         fields = ('email', 'password')
 
+
+class TwitterUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        nodel = NewUser
+        fields = '__all__'
