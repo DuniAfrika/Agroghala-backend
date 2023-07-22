@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from .secrets import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,7 +47,7 @@ INSTALLED_APPS = [
     'social_django',
     'oauth2_provider',
     'authentication.apps.AuthenticationConfig',
-    #oauth
+    # oauth
     'drf_social_oauth2',
 ]
 
@@ -64,9 +63,9 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
-#Allowing all request permissions
+# Allowing all request permissions
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES':[
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -81,7 +80,7 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-#Whitelisting The react app
+# Whitelisting The react app
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:3000'
@@ -168,10 +167,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.NewUser'
 
-#ading backends for authentication
+# ading backends for authentication
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2', #Add Facebook backend
-    'social_core.backends.twitter.TwitterOAuth', #Add Twitter backend
+    'social_core.backends.facebook.FacebookOAuth2',  # Add Facebook backend
+    'social_core.backends.twitter.TwitterOAuth',  # Add Twitter backend
     'social_core.backends.apple.AppleIdAuth',  # Add Apple backend
     'social_core.backends.google.GoogleOAuth2',
     'drf_social_oauth2.backends.DjangoOAuth2',
@@ -187,13 +186,3 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 LOGIN_URL = 'token_obtain_api'
 LOGOUT_URL = ''
 LOGIN_REDIRECT_URL = ''
-
-SOCIAL_AUTH_FACEBOOK_KEY = FACEBOOK_ID
-SOCIAL_AUTH_FACEBOOK_SECRET = FACEBOOK_SECRET_KEY
-
-SOCIAL_AUTH_TWITTER_KEY = TWITTER_ID
-SOCIAL_AUTH_TWITTER_SECRET = TWITTER_SECRET_KEY
-
-# Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = GOOGLE_ID
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = GOOGLE_SECRET_KEY
