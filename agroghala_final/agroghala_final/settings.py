@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from .secrets import *
+import os
+#from .secrets import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'services',
+    'feedback',
     'blogs',
     'myproducts',
     'rest_framework',
@@ -188,6 +190,7 @@ LOGIN_URL = 'token_obtain_api'
 LOGOUT_URL = ''
 LOGIN_REDIRECT_URL = ''
 
+"""""
 SOCIAL_AUTH_FACEBOOK_KEY = FACEBOOK_ID
 SOCIAL_AUTH_FACEBOOK_SECRET = FACEBOOK_SECRET_KEY
 
@@ -197,3 +200,7 @@ SOCIAL_AUTH_TWITTER_SECRET = TWITTER_SECRET_KEY
 # Google configuration
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = GOOGLE_ID
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = GOOGLE_SECRET_KEY
+"""""
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

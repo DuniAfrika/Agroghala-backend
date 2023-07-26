@@ -8,7 +8,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=50, default="")
     content = models.TextField()
     views = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='blog_images/', blank=True)
+    image = models.ImageField(default='default.jpg', upload_to='blog_images/', blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

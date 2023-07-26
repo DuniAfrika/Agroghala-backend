@@ -11,7 +11,7 @@ class Ghala(models.Model):
     rent_price = models.IntegerField()
     on_demand = models.BooleanField(default=False)
     space_available = models.BooleanField(default=True)
-    image = models.ImageField(default='default.jpg', upload_to='./services/images')
+    image = models.ImageField(default='default.jpg', upload_to='images')
 
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Soko(models.Model):
     last_price = models.IntegerField(default=0)
     current_price = models.IntegerField(default=0)
     on_demand = models.BooleanField()
-    image = models.ImageField(default='default.jpg', upload_to='./services/images')
+    image = models.ImageField(default='default.jpg', upload_to='images')
 
     def __str__(self):
         return self.commodity
