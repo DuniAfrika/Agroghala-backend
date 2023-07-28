@@ -6,7 +6,7 @@ from django.conf import settings
 
 class Blog(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50, default="")
+    title = models.CharField(max_length=255, default="")
     content = models.TextField()
     views = models.IntegerField(default=0)
     image = models.ImageField(default='default.jpg', upload_to='blog_images/', blank=True)
