@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from users.models import NewUser
+from django.conf import settings
 
 
 class Blog(models.Model):
-    author = models.ForeignKey(NewUser, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, default="")
     content = models.TextField()
     views = models.IntegerField(default=0)

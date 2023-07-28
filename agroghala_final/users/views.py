@@ -7,7 +7,8 @@ from .models import *
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import get_user_model, login
-from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
 
 NewUser=get_user_model()
 
@@ -34,3 +35,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+
+def csrf_token_view(request):
+    return JsonResponse({'csrfToken': request.COOKIES['csrftoken']})

@@ -1,15 +1,23 @@
 from .models import *
 from .serializers import *
 from rest_framework.views import APIView
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework import status
 
 
-class BlogListCreateView(APIView):
+class BlogListCreateView(generics.ListCreateAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
     def get(self, request):
         blogs = Blog.objects.all()
         serializer = BlogSerializer(blogs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
     def post(self, request):
         serializer = BlogSerializer(data=request.data)
