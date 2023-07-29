@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     # oauth
     'drf_social_oauth2',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [

@@ -13,6 +13,11 @@ class BlogSerializer(serializers.ModelSerializer):
         model = Blog
         fields = ('id', 'author', 'title', 'content', 'views', 'date_posted')
 
+class CreateBlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = ('title', 'content')
+
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment

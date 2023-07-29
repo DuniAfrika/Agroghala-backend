@@ -1,5 +1,4 @@
 from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status
 from .serializers import *
 from rest_framework import generics
@@ -9,6 +8,10 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import get_user_model, login
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 
 NewUser=get_user_model()
